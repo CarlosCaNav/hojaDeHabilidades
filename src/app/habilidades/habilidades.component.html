@@ -1,0 +1,103 @@
+<p>habilidades works!</p>
+
+<br><br><br>
+
+{{DatosService.personaje.puntosHabilidades}}
+Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}<br>
+<div class="caja">
+    <div class="habilidades">
+        <div class="habilidad">
+            Fuerza <br>{{ this.DatosService.personaje.fuerza }}
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('restar', 'fuerza')">-</button>
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('sumar', 'fuerza')">+</button>
+        </div>
+        <div class="habilidad">
+            Puntería <br>{{ this.DatosService.personaje.punteria }}
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('restar', 'punteria')">-</button>
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('sumar', 'punteria')">+</button>
+        </div>
+        <div class="habilidad">
+            Velocidad <br>{{ this.DatosService.personaje.velocidad}}
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('restar', 'velocidad')">-</button>
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('sumar', 'velocidad')">+</button>
+        </div>
+        <div class="habilidad">
+            Percepción <br>{{ this.DatosService.personaje.percepcion }}
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('restar', 'percepcion')">-</button>
+            <button class="bRedondo" *ngIf="this.mostrarBotones"
+                (click)="cambioHabilidad('sumar', 'percepcion')">+</button>
+        </div>
+    </div>
+    <div class="cuadro">
+        <div class="cuadroDanio" style="background-image: url('assets/salud/rojo.png')">
+            <img class="danio" [ngStyle]="{opacity: this.DatosService.personaje.danioCabeza}" src="assets/salud/cabeza.png">
+            <img class="danio" [ngStyle]="{opacity: this.DatosService.personaje.danioBrazoD}" src="assets/salud/brazoD.png">
+            <img class="danio" [ngStyle]="{opacity: this.DatosService.personaje.danioBrazoI}" src="assets/salud/brazoI.png">
+            <img class="danio" [ngStyle]="{opacity: this.DatosService.personaje.danioTronco}" src="assets/salud/torso.png">
+            <img class="danio" [ngStyle]="{opacity: this.DatosService.personaje.danioPiernaD}" src="assets/salud/piernaD.png">
+            <img class="danio" [ngStyle]="{opacity: this.DatosService.personaje.danioPiernaI}" src="assets/salud/piernaI.png">
+        </div>
+    </div>
+</div>
+
+<!-- 
+<br><br><br>
+<div class="caja">
+    <div class="habilidad">
+        <p>Fuerza {{DatosService.habilidades["fuerza"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','fuerza')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','fuerza')">+</button>
+        </p>
+    </div>
+    <div class="habilidad">
+        <p>Velocidad {{DatosService.habilidades["velocidad"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','velocidad')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','velocidad')">+</button>
+        </p>
+    </div>
+    <div class="habilidad">
+        <p> Percepción {{DatosService.habilidades["percepcion"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','percepcion')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','percepcion')">+</button>
+        </p>
+    </div>
+    <div class="habilidad">
+        <p>Puntería {{DatosService.habilidades["punteria"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','punteria')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','punteria')">+</button>
+        </p>
+    </div>
+    <div class="habilidad">
+        <p> Observación{{DatosService.habilidades["observacion"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','observacion')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','observacion')">+</button>
+        </p>
+    </div>
+    <div class="habilidad">
+        <p> Discrepción {{DatosService.habilidades["discrepcion"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','discrepcion')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','discrepcion')">+</button>
+        </p>
+    </div>
+    <div class="habilidad">
+        <p>Saber {{DatosService.habilidades["saber"]}}<br>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('restar','saber')">-</button>
+            <button *ngIf="this.mostrarBotones" (click)="cambioHabilidad('sumar','saber')">+</button>
+        </p>
+    </div>
+</div> -->
+<button *ngIf="this.mostrarBotones" (click)="this.guardar()">Guardar</button>
+<br><br><br>
+
+{{DatosService.borrar}}
+<button (click)="DatosService.ponercaca('caca')">caca</button>
+<button (click)="DatosService.ponercaca('culo')">culo</button> |
+<button (click)="DatosService.guardar()">guardar</button>
+<button (click)="DatosService.cargar()">cargar</button>

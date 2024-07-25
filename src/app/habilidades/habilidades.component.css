@@ -1,0 +1,49 @@
+.caja {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 500px;
+    border: 2px solid black;
+}
+
+.habilidades {
+    display: flex;
+    flex-direction: column;
+    }
+
+.habilidad {
+    height: 50px;
+    width: 120px;
+    border: 2px solid blue;
+    margin-left: 0;
+    text-transform: capitalize;
+    text-align: justify;
+}
+
+.cuadro {
+    border: 2px solid red;
+    height: auto;
+    width: 100%;
+}
+
+.cuadroDanio {
+    border: 2px solid green;
+    height: 360px;
+    width: 250px;
+}
+
+.danio {
+    position: absolute;
+    z-index: 1;
+}
+
+.bRedondo {
+    height: 20px;
+    width: 20px;
+    margin: 1px;
+    border-radius: 100%;
+    border: 0px;
+    background-color: gainsboro;
+    box-shadow: 2px 2px 2px black;
+
+}
