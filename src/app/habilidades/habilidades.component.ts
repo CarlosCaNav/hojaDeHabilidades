@@ -18,11 +18,11 @@ export class HabilidadesComponent {
   intentos = 2;
 
   cambioHabilidad(operacion: string, habilidad: string) {
-    
+
     if (operacion == "restar") {
       if (this.DatosService.personaje.puntosHabilidades >= 2 && this.DatosService.personaje[habilidad] >= 2) {
         this.DatosService.personaje[habilidad] -= 1;
-        
+
         this.DatosService.personaje.puntosHabilidades += 1;
         this.intentos = 2; // Reinicializa intentos a 2 cada vez que se resta un punto
         console.log(this.intentos);
@@ -39,9 +39,9 @@ export class HabilidadesComponent {
     }
     else if (operacion == "sumar") {
       if (this.DatosService.personaje.puntosHabilidades >= 1 && this.DatosService.personaje[habilidad] <= 5) {
-        this.DatosService.personaje[habilidad] +=1;
+        this.DatosService.personaje[habilidad] += 1;
         console.log(habilidad);
-        
+
         this.DatosService.personaje.puntosHabilidades -= 1;
         this.intentos = 2; // Reinicializa intentos a 2 cada vez que se suma un punto
       } else if (this.DatosService.personaje[habilidad] >= 6) {
@@ -61,7 +61,15 @@ export class HabilidadesComponent {
     else { window.alert("Error! algo falla") }
   }
 
-  recibirDanio(operacion: string, lugar: string){}
+  recibirDanio(event: MouseEvent, lugar: string) {
+    if (event.button === 0) {
+      this.DatosService.personaje[lugar] -= 0.1;
+    }
+    if (event.button === 2) {
+      event.preventDefault();
+      this.DatosService.personaje[lugar] += 0.1;
+    }
+  }
 
   guardar() {
     if (this.DatosService.personaje.puntosHabilidades <= 0) {

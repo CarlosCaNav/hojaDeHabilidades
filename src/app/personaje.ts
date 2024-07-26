@@ -17,7 +17,7 @@ export interface Personaje {[key: string]: any;
     danioCabeza: number,
     danioBrazoD: number,
     danioBrazoI: number,
-    danioTronco: number,
+    danioTorso: number,
     danioPiernaD: number,
     danioPiernaI: number,
 

@@ -27,7 +27,7 @@ export class DatosService {
     danioCabeza: 1,
     danioBrazoD: 1,
     danioBrazoI: 1,
-    danioTronco: 1,
+    danioTorso: 1,
     danioPiernaD: 1,
     danioPiernaI: 1,
 

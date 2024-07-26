@@ -45,5 +45,46 @@
     border: 0px;
     background-color: gainsboro;
     box-shadow: 2px 2px 2px black;
+}
 
+.botonDanio{
+    position: absolute;
+    z-index: 2;
+}
+
+.cabeza{
+    height: 60px;
+    width: 70px;
+    margin-top: 25px;
+    margin-left: 90px;
+}
+.torso{
+    height: 130px;
+    width: 45px;
+    margin-top: 95px;
+    margin-left: 100px;
+}
+.brazoD{
+    height: 100px;
+    width: 70px;
+    margin-top: 100px;
+    margin-left: 25px;
+}
+.brazoI{
+    height: 100px;
+    width: 70px;
+    margin-top: 100px;
+    margin-left: 150px;
+}
+.piernaD{
+    height: 120px;
+    width: 90px;
+    margin-top: 230px;
+    margin-left: 30px;
+}
+.piernaI{
+    height: 120px;
+    width: 90px;
+    margin-top: 230px;
+    margin-left: 125px;
 }
