@@ -14,7 +14,6 @@ export class HabilidadesComponent {
   constructor(public DatosService: DatosService) { }
   objectKeys = Object.keys;
 
-  mostrarBotones: boolean = true;
   intentos = 2;
 
   cambioHabilidad(operacion: string, habilidad: string) {
@@ -62,18 +61,16 @@ export class HabilidadesComponent {
   }
 
   recibirDanio(event: MouseEvent, lugar: string) {
-    if (event.button === 0) {
-      this.DatosService.personaje[lugar] -= 0.1;
+    if (this.DatosService.personaje[lugar]>= 0) {
+      if (event.button == 2) {
+        event.preventDefault();
+        this.DatosService.personaje[lugar] += 0.1;
+      }
+      else if (event.button === 0) {
+        this.DatosService.personaje[lugar] -= 0.1;
+      }
     }
-    if (event.button === 2) {
-      event.preventDefault();
-      this.DatosService.personaje[lugar] += 0.1;
-    }
+    else {this.DatosService.personaje[lugar] = 1}
   }
 
-  guardar() {
-    if (this.DatosService.personaje.puntosHabilidades <= 0) {
-      this.mostrarBotones = false;
-    } else { window.alert("hey! que te quedan puntos para repartir") }
-  }
 }

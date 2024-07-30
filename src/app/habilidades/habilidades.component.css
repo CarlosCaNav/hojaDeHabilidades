@@ -49,7 +49,7 @@
 
 .botonDanio{
     position: absolute;
-    z-index: 2;
+    z-index: 3;
 }
 
 .cabeza{
@@ -87,4 +87,20 @@
     width: 90px;
     margin-top: 230px;
     margin-left: 125px;
+}
+
+.palpadeo{
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    height: 360px;
+    width: 250px;
+    animation: bucle 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bucle {
+    60%{ opacity: 0;}
+    75%{ opacity: 1;}
+    100%{ opacity: 0;}
 }
