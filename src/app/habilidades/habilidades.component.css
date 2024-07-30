@@ -14,8 +14,8 @@
 .habilidad {
     height: 50px;
     width: 120px;
-    border: 2px solid blue;
-    margin-left: 0;
+    margin-left: 10px;
+    margin-top: 10px;
     text-transform: capitalize;
     text-align: justify;
 }
@@ -87,6 +87,15 @@
     width: 90px;
     margin-top: 230px;
     margin-left: 125px;
+}
+
+.imgCantidad{
+    border: 2px solid black;
+    height: 10px;
+    width: 80px;
+    background-size: cover;
+    image-rendering: pixelated;
+    margin-left: 10px;
 }
 
 .palpadeo{

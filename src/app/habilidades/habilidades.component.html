@@ -6,46 +6,97 @@ Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}</div><br>
 <div class="caja">
     <div class="habilidades">
         <div class="habilidad">
-            Fuerza <br>{{ this.DatosService.personaje.fuerza }}
+            Fuerza {{ this.DatosService.personaje.fuerza }}<br>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'fuerza')">-</button>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('sumar', 'fuerza')">+</button>
+                <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.fuerza">
+                    <div class="imgCantidad" *ngSwitchCase="1" style="background-image: url('assets/habilidad/1.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="2" style="background-image: url('assets/habilidad/2.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="3" style="background-image: url('assets/habilidad/3.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="4" style="background-image: url('assets/habilidad/4.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="5" style="background-image: url('assets/habilidad/5.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="6" style="background-image: url('assets/habilidad/6.png')"></div>
+                </div>
+                <!-- 
+                <div class="habilidad" style="background-image: url('assets/habilidad/1.png')"></div>
+                <div class="habilidad" [ngStyle]="{background-image: url('public/assets/habilidad/ + DatosService.personaje.fuerza + .png')}"></div> -->
         </div>
         <div class="habilidad">
-            Velocidad <br>{{ this.DatosService.personaje.velocidad}}
+            Velocidad {{ this.DatosService.personaje.velocidad}}<br>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'velocidad')">-</button>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('sumar', 'velocidad')">+</button>
+                <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.velocidad">
+                    <div class="imgCantidad" *ngSwitchCase="1" style="background-image: url('assets/habilidad/1.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="2" style="background-image: url('assets/habilidad/2.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="3" style="background-image: url('assets/habilidad/3.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="4" style="background-image: url('assets/habilidad/4.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="5" style="background-image: url('assets/habilidad/5.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="6" style="background-image: url('assets/habilidad/6.png')"></div>
+                </div>
         </div>
         <div class="habilidad">
-            Puntería <br>{{ this.DatosService.personaje.punteria }}
+            Puntería {{ this.DatosService.personaje.punteria }}<br>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'punteria')">-</button>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('sumar', 'punteria')">+</button>
+                <div *ngIf="!this.DatosService.mostrarBotones"  [ngSwitch]="DatosService.personaje.punteria">
+                    <div class="imgCantidad" *ngSwitchCase="1" style="background-image: url('assets/habilidad/1.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="2" style="background-image: url('assets/habilidad/2.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="3" style="background-image: url('assets/habilidad/3.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="4" style="background-image: url('assets/habilidad/4.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="5" style="background-image: url('assets/habilidad/5.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="6" style="background-image: url('assets/habilidad/6.png')"></div>
+                </div>
         </div>
         <div class="habilidad">
-            Percepción <br>{{ this.DatosService.personaje.percepcion }}
+            Percepción {{ this.DatosService.personaje.percepcion }}<br>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'percepcion')">-</button>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('sumar', 'percepcion')">+</button>
+                <div *ngIf="!this.DatosService.mostrarBotones"  [ngSwitch]="DatosService.personaje.percepcion">
+                    <div class="imgCantidad" *ngSwitchCase="1" style="background-image: url('assets/habilidad/1.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="2" style="background-image: url('assets/habilidad/2.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="3" style="background-image: url('assets/habilidad/3.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="4" style="background-image: url('assets/habilidad/4.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="5" style="background-image: url('assets/habilidad/5.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="6" style="background-image: url('assets/habilidad/6.png')"></div>
+                </div>
         </div>
         <div class="habilidad">
-            Destreza <br>{{ this.DatosService.personaje.destreza }}
+            Destreza {{ this.DatosService.personaje.destreza }}<br>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'destreza')">-</button>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('sumar', 'destreza')">+</button>
+                <div *ngIf="!this.DatosService.mostrarBotones"  [ngSwitch]="DatosService.personaje.fuerza">
+                    <div class="imgCantidad" *ngSwitchCase="1" style="background-image: url('assets/habilidad/1.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="2" style="background-image: url('assets/habilidad/2.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="3" style="background-image: url('assets/habilidad/3.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="4" style="background-image: url('assets/habilidad/4.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="5" style="background-image: url('assets/habilidad/5.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="6" style="background-image: url('assets/habilidad/6.png')"></div>
+                </div>
         </div>
         <div class="habilidad">
-            Discrepción <br>{{ this.DatosService.personaje.discrepcion }}
+            Discrepción {{ this.DatosService.personaje.discrepcion }}<br>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'discrepcion')">-</button>
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('sumar', 'discrepcion')">+</button>
+                <div *ngIf="!this.DatosService.mostrarBotones"  [ngSwitch]="DatosService.personaje.fuerza">
+                    <div class="imgCantidad" *ngSwitchCase="1" style="background-image: url('assets/habilidad/1.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="2" style="background-image: url('assets/habilidad/2.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="3" style="background-image: url('assets/habilidad/3.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="4" style="background-image: url('assets/habilidad/4.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="5" style="background-image: url('assets/habilidad/5.png')"></div>
+                    <div class="imgCantidad" *ngSwitchCase="6" style="background-image: url('assets/habilidad/6.png')"></div>
+                </div>
         </div>
     </div>
     <div class="cuadro">
