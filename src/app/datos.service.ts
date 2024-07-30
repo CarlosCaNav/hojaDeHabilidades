@@ -54,7 +54,11 @@ export class DatosService {
   }
 
   guardar() {
-    if (localStorage.getItem('usuario') != null) {
+    if (this.personaje.puntosHabilidades >= 1) {
+      window.alert("hey! que te quedan puntos para repartir tontito.")
+    }
+
+    else if (localStorage.getItem('usuario') != null) {
 
       if (confirm('Ya existe un archivo de guardado ¿Seguro que desea sobrescribirlo?')) {
         this.guardando()
@@ -69,33 +73,39 @@ export class DatosService {
     const usuarioJSON = JSON.stringify(this.personaje);
     const fecha = new Date();
 
-    if (this.personaje.puntosHabilidades <= 0) {
-      this.mostrarBotones = false;
-      localStorage.setItem('usuario', usuarioJSON);
-/* 
-  this.fechaDeGuardado = fecha.getDay().toString() + fecha.getMonth().toString() */
+    this.mostrarBotones = false;
+    localStorage.setItem('usuario', usuarioJSON);
+    /* 
+      this.fechaDeGuardado = fecha.getDay().toString() + fecha.getMonth().toString() */
 
-  this.fechaDeGuardado = fecha.toDateString()
-
-
-    }
-
-    else { window.alert("hey! que te quedan puntos para repartir tontito.") }
+    this.fechaDeGuardado = fecha.toDateString()
 
 
   }
+
 
   cargar() {
-    const usuarioJSON = localStorage.getItem('usuario');
 
-    if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
-      if (usuarioJSON) {
-        this.personaje = JSON.parse(usuarioJSON);
-        this.mostrarBotones = false;
+    if (localStorage.getItem('usuario') != null) {
+      if (this.personaje.puntosHabilidades <= 12) {
+        if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
+        this.cargando()
+        }
       }
+      else { this.cargando()}
+
     }
+    else { window.alert("No hay archivo guardado.") }
   }
 
+  cargando() {
+    const usuarioJSON = localStorage.getItem('usuario');
+
+    if (usuarioJSON) { //no entiendo muy bien por qué es necesario esto
+      this.personaje = JSON.parse(usuarioJSON);
+      this.mostrarBotones = false;
+    }
+  }
 
   borrarTodo() {
     if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {

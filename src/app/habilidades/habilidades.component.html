@@ -1,16 +1,16 @@
 <p>habilidades works!</p>
 
 <br><br><br>
-
-{{DatosService.personaje.puntosHabilidades}}
-Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}<br>
+<div *ngIf="this.DatosService.mostrarBotones">
+Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}</div><br>
 <div class="caja">
     <div class="habilidades">
         <div class="habilidad">
             Fuerza <br>{{ this.DatosService.personaje.fuerza }}
             <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
                 (click)="cambioHabilidad('restar', 'fuerza')">-</button>
-            <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones" (click)="cambioHabilidad('sumar', 'fuerza')">+</button>
+            <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                (click)="cambioHabilidad('sumar', 'fuerza')">+</button>
         </div>
         <div class="habilidad">
             Velocidad <br>{{ this.DatosService.personaje.velocidad}}
@@ -76,6 +76,6 @@ Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}<br>
 <br><br><br>
 
 Fecha del archivo de guardado (aun sin implementar) {{DatosService.fechaDeGuardado}}<br>
-<button *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.guardar()">Guardar</button>
+<button (click)="DatosService.guardar()">Guardar</button>
 <button *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button><br><br>
 <button (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button>

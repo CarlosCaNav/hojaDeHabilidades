@@ -19,7 +19,7 @@ export class HabilidadesComponent {
   cambioHabilidad(operacion: string, habilidad: string) {
 
     if (operacion == "restar") {
-      if (this.DatosService.personaje.puntosHabilidades >= 2 && this.DatosService.personaje[habilidad] >= 2) {
+      if (this.DatosService.personaje[habilidad] >= 2) {
         this.DatosService.personaje[habilidad] -= 1;
 
         this.DatosService.personaje.puntosHabilidades += 1;
@@ -27,9 +27,6 @@ export class HabilidadesComponent {
         console.log(this.intentos);
       }
       else if (this.DatosService.personaje[habilidad] <= 1 && this.intentos >= 1) {
-        this.intentos -= 1;
-      }
-      else if (this.DatosService.personaje.puntosHabilidades <= 1 && this.intentos >= 1) {
         this.intentos -= 1;
       }
       else {
@@ -53,7 +50,7 @@ export class HabilidadesComponent {
         if (this.intentos > 0) {
           this.intentos -= 1;
         } else {
-          window.alert("No te quedan puntos para repartir tontito");
+          window.alert("No te quedan puntos para repartir tontito.");
         }
       }
     }
@@ -61,7 +58,7 @@ export class HabilidadesComponent {
   }
 
   recibirDanio(event: MouseEvent, lugar: string) {
-    if (this.DatosService.personaje[lugar]>= 0) {
+    if (this.DatosService.personaje[lugar] >= 0) {
       if (event.button == 2) {
         event.preventDefault();
         this.DatosService.personaje[lugar] += 0.1;
@@ -70,7 +67,7 @@ export class HabilidadesComponent {
         this.DatosService.personaje[lugar] -= 0.1;
       }
     }
-    else {this.DatosService.personaje[lugar] = 1}
+    else { this.DatosService.personaje[lugar] = 1 }
   }
 
 }
