@@ -56,7 +56,7 @@ export class DatosService {
   guardar() {
     if (localStorage.getItem('usuario') != null) {
 
-      if (confirm('Ya existe un archivo de guardado, ¿seguro que deseas sobrescribirlo?')) {
+      if (confirm('Ya existe un archivo de guardado ¿Seguro que desea sobrescribirlo?')) {
         this.guardando()
       }
     }
@@ -80,7 +80,7 @@ export class DatosService {
 
     }
 
-    else { window.alert("hey! que te quedan puntos para repartir") }
+    else { window.alert("hey! que te quedan puntos para repartir tontito.") }
 
 
   }
@@ -88,7 +88,7 @@ export class DatosService {
   cargar() {
     const usuarioJSON = localStorage.getItem('usuario');
 
-    if (confirm("¿Estás seguro que quieres cargar el archivo guardado?, los datos no guardados se perderán")) {
+    if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
       if (usuarioJSON) {
         this.personaje = JSON.parse(usuarioJSON);
         this.mostrarBotones = false;
@@ -100,7 +100,7 @@ export class DatosService {
   borrarTodo() {
     if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {
       localStorage.clear();
-      console.log('Todos los datos han sido eliminados de localStorage');
+      window.alert('Todos los datos han sido eliminados.');
     }
   }
 }
