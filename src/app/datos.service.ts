@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Personaje } from './personaje';
+/* import { formatDate } from '@angular/common'; */
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatosService {
 
-  fechaDeGuardado = "";
+  fechaDeGuardado: string ="No hay archivo de guardado.";
   mostrarBotones: boolean = true;
 
   personaje: Personaje = {
@@ -48,7 +49,9 @@ export class DatosService {
     ['rojo', 'url(src/assets/salud/rojo.png)'],
   ]
 
-  constructor() { }
+  constructor() {
+    this.cargandoFechaGuardado()
+  }
   boton() {
 
   }
@@ -61,7 +64,7 @@ export class DatosService {
     else if (localStorage.getItem('usuario') != null) {
 
       if (confirm('Ya existe un archivo de guardado ¿Seguro que desea sobrescribirlo?')) {
-        this.guardando()
+        this.guardando();
       }
     }
 
@@ -71,15 +74,23 @@ export class DatosService {
 
   guardando() {
     const usuarioJSON = JSON.stringify(this.personaje);
-    const fecha = new Date();
+    const fecha = new Date().toUTCString();
 
     this.mostrarBotones = false;
     localStorage.setItem('usuario', usuarioJSON);
+    localStorage.setItem('fechaGuardado', fecha);
+    this.cargandoFechaGuardado();
+    
+    /* 
+    localStorage.setItem('fecha', fecha.toDateString()); */
+
     /* 
       this.fechaDeGuardado = fecha.getDay().toString() + fecha.getMonth().toString() */
+/* 
+    localStorage.setItem('fechadeGuardado', fecha) */
 
-    this.fechaDeGuardado = fecha.toDateString()
-
+    console.log(fecha);
+    
 
   }
 
@@ -89,28 +100,39 @@ export class DatosService {
     if (localStorage.getItem('usuario') != null) {
       if (this.personaje.puntosHabilidades <= 12) {
         if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
-        this.cargando()
+          this.cargandoUsuario()
         }
       }
-      else { this.cargando()}
+      else { this.cargandoUsuario() }
 
     }
     else { window.alert("No hay archivo guardado.") }
   }
 
-  cargando() {
+  cargandoUsuario() {
     const usuarioJSON = localStorage.getItem('usuario');
 
-    if (usuarioJSON) { //no entiendo muy bien por qué es necesario esto
-      this.personaje = JSON.parse(usuarioJSON);
-      this.mostrarBotones = false;
-    }
-  }
 
-  borrarTodo() {
-    if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {
-      localStorage.clear();
-      window.alert('Todos los datos han sido eliminados.');
+      if (usuarioJSON) { 
+        this.personaje = JSON.parse(usuarioJSON);
+        this.mostrarBotones = false;
+      }
+    }
+    cargandoFechaGuardado() {
+      const fechaDeGuardado = localStorage.getItem('fechaGuardado');
+  
+  
+      if (fechaDeGuardado) { //no entiendo muy bien por qué es necesario esto
+        this.fechaDeGuardado = fechaDeGuardado;
+      }
+    }
+  
+
+    borrarTodo() {
+      if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {
+        localStorage.clear();
+        window.alert('Todos los datos han sido eliminados.');
+      }
+      this.fechaDeGuardado = "No hay archivo de guardado."
     }
   }
-}
