@@ -1,0 +1,13 @@
+.dialogo{
+    position: absolute;
+    z-index: 4;
+    border: 2px, solid, red;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.712);
+    background-color: aliceblue;
+    width: 300px;
+    height: 320px;
+    margin-top: 6vh; 
+    margin-left: calc(95vw - 300px);
+    padding-left: 20px;
+}

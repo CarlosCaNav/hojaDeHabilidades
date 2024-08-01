@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { DatosService } from '../datos.service';
 import { CommonModule } from '@angular/common';
+import { UsuariosComponent } from "../usuarios/usuarios.component";
+import { CrearContraseniaComponent } from "../crear-contrasenia/crear-contrasenia.component";
+import { PonerContraseniaComponent } from "../poner-contrasenia/poner-contrasenia.component";
 
 @Component({
   selector: 'app-habilidades',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, UsuariosComponent, CrearContraseniaComponent, PonerContraseniaComponent],
   templateUrl: './habilidades.component.html',
   styleUrl: './habilidades.component.css'
 })
 
 export class HabilidadesComponent {
-  constructor(public DatosService: DatosService) { }
+  constructor(public DatosService: DatosService) {
+    this.DatosService.cargandoInicio() 
+  }
   objectKeys = Object.keys;
 
   intentos = 2;

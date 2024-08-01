@@ -1,0 +1,12 @@
+.dialogo{
+    position: absolute;
+    z-index: 4;
+    border: 2px, solid, red;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.712);
+    background-color: aliceblue;
+    width: 300px;
+    height: 200px;
+    margin-top: 60vh; 
+    margin-left: calc(95vw - 300px);
+}

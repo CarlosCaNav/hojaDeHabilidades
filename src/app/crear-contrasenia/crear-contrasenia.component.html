@@ -1,0 +1,12 @@
+
+<div class="dialogo">
+    
+    <h1>Hola!</h1>
+    <p>Nombre de usuario:<br>
+    <input type="text" [(ngModel)]="this.DatosService.usuarioActual"></p><br>
+    <p>Contraseña:<br>
+    <input type="text" [(ngModel)]="this.DatosService.usuarioContrasenia"></p>
+    <p>Repite contraseña: <br>
+    <input type="text" [(ngModel)]="this.DatosService.repetirContrasenia"></p>
+    <button (click)="guardar()">Guardar</button>
+</div>
