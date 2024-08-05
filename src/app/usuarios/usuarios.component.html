@@ -1,11 +1,8 @@
 <div class="dialogo">
-    Usuarios:
-    
-    <div *ngIf="this.DatosService.emergente == 'usuarios'">Este diálogo está activo</div>
-
-    {{this.DatosService.usuariosGuardados}}
+   <b> Usuarios:</b>
     <ul>
         <li class="botones" *ngFor=" let usuario of this.DatosService.usuariosGuardados">
-        <button (click)="this.DatosService.cargarAcceso(usuario)">{{usuario}}</button></li>
+        <button class="boton" (click)="this.DatosService.cargarAcceso(usuario)">{{usuario}}</button></li>
     </ul>
+    <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 150px;">Cancelar</button>
 </div>

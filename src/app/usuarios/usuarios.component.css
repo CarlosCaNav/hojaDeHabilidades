@@ -1,14 +1,25 @@
 .dialogo{
+    font-size: larger;
     position: absolute;
     z-index: 4;
-    border: 2px, solid, red;
+    border: 2px, solid, aliceblue;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.726);
     background-color: aliceblue;
-    width: 600px;
-    height: 500px;
+    width: 250px;
+    height:min-content;
     margin-top: 20vh;
-    margin-left: 60px;
+    margin-left: calc(50VW - 125px);
+    padding: 20px;
     /* 
     margin-left: calc(50vw - 300px); */
+}
+
+.boton{
+    margin: 5px;
+    padding: 4px;
+    padding-bottom: 3px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 2px 2px solid black;
 }

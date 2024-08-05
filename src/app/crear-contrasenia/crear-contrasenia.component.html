@@ -1,14 +1,12 @@
 
 <div class="dialogo">
-
-    <div *ngIf="this.DatosService.emergente == 'crearUsuario'">Este diálogo está activo</div>
-    
-    <h1>Hola!</h1>
+    <h1>¡Hola!</h1>
     <p>Nombre de usuario:<br>
     <input type="text" [(ngModel)]="this.DatosService.usuarioActual"></p><br>
     <p>Contraseña:<br>
-    <input type="text" [(ngModel)]="this.DatosService.usuarioContrasenia"></p>
+    <input type="password" [(ngModel)]="this.DatosService.usuarioContrasenia"></p>
     <p>Repite contraseña: <br>
-    <input type="text" [(ngModel)]="this.DatosService.repetirContrasenia"></p>
-    <button (click)="guardar()">Guardar</button>
+    <input type="password" [(ngModel)]="this.DatosService.repetirContrasenia"></p>
+    <button (click)="guardar()" class="boton">Guardar</button>
+    <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 50px;">Cancelar</button>
 </div>

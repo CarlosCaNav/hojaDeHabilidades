@@ -1,10 +1,7 @@
 
 <div class="dialogo">
-
-    <div *ngIf="this.DatosService.emergente == 'ponerContrasenia'">Este diálogo está activo</div>
-
-<p>Contraseña de {{this.DatosService.usuarioActual}}</p><br>
-<input type="text" [(ngModel)]="this.DatosService.usuarioContrasenia"><br>
-<button (click)="this.DatosService.cargandoUsuario()">Cargar.</button>
-
+<p>Contraseña de {{this.DatosService.usuarioAcceder}}:</p>
+<input type="password" [(ngModel)]="this.DatosService.usuarioContrasenia"><br><br>
+<button class="boton" (click)="this.DatosService.cargandoUsuario()">Cargar</button>
+<button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 50px;">Cancelar</button>
 </div>

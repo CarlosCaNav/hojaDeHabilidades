@@ -110,6 +110,7 @@ export class DatosService {
 
 
     this.cargandoInicio();
+    this.emergente="";
 
 
     /* 
@@ -162,6 +163,7 @@ export class DatosService {
         if (usuarioJSON) {
           this.personaje = JSON.parse(usuarioJSON);
           this.mostrarBotones = false;
+          this.emergente = "";
         }
       }
       else { window.alert("La contraseña no es correcta") }
@@ -179,6 +181,7 @@ export class DatosService {
     }
   }
 
+  cancelar(){this.emergente = ""}
 
   borrarTodo() {
     if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {
