@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { DatosService } from '../datos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })

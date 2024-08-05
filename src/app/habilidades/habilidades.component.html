@@ -5,6 +5,8 @@
     <div class="conjunto">
         <div *ngIf="this.DatosService.mostrarBotones">
             Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}</div><br>
+            <div *ngIf="!this.DatosService.mostrarBotones">
+                Usuario Actual: {{ this.DatosService.usuarioActual}}</div><br>
         <div class="caja">
             <div class="habilidades">
                 <div class="habilidad">
@@ -202,9 +204,11 @@
 
         Fecha del archivo de guardado: {{DatosService.fechaDeGuardado}}<br>
         <button (click)="DatosService.guardar()">Guardar</button>
-        <button *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button><br><br>
-        <button *ngIf="this.DatosService.fechaDeGuardado != 'No hay archivo de guardado.'"
-            (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button>
+        <button *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button><br><br><!-- 
+        <button *ngIf="this.DatosService.fechaDeGuardado != 'No hay archivo de guardado.'" Este será el que valga
+            (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button> -->
+            <button (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button>
+
 
     </div>
 </div>

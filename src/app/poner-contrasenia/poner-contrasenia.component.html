@@ -1,2 +1,10 @@
 
-<div class="dialogo"><p>poner-contrasenia works!</p></div>
+<div class="dialogo">
+
+    <div *ngIf="this.DatosService.emergente == 'ponerContrasenia'">Este diálogo está activo</div>
+
+<p>Contraseña de {{this.DatosService.usuarioActual}}</p><br>
+<input type="text" [(ngModel)]="this.DatosService.usuarioContrasenia"><br>
+<button (click)="this.DatosService.cargandoUsuario()">Cargar.</button>
+
+</div>

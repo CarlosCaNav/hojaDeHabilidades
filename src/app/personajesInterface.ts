@@ -24,4 +24,6 @@ export interface Personaje {[key: string]: any;
     saludFisico: number,
     saludCordura: number,
 
+    contrasenia: string,
+
 }

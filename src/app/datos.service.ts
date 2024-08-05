@@ -10,13 +10,16 @@ export class DatosService {
 
   keyAdmin: string = "Carlos";
 
-  usuariosGuardados= [''];
+  usuariosGuardados: Array<string> = ['Diego', 'Carlos', 'Alfonso'];
   usuarioActual: string = "";
+  usuarioAcceder: string = ""
   usuarioContrasenia = "";
   repetirContrasenia = "";
 
   fechaDeGuardado: string = "No hay archivo de guardado.";
+
   mostrarBotones: boolean = true;
+  emergente: string = "";
 
   personaje: Personaje = {
     id: 1,
@@ -43,6 +46,8 @@ export class DatosService {
 
     saludFisico: 1,
     saludCordura: 1,
+
+    contrasenia: "",
   }
 
   direcionImagenes = [
@@ -62,32 +67,50 @@ export class DatosService {
   }
 
   guardar() {
-    if (this.personaje.puntosHabilidades >= 1) {
-      window.alert("hey! que te quedan puntos para repartir tontito.")
-    }
-
-    else if (localStorage.getItem(this.usuarioActual) != null) {
-
-      if (confirm('Ya existe un archivo de guardado ¿Seguro que desea sobrescribirlo?')) {
-        this.guardando();
+    if (this.usuarioActual == "") {
+      if (this.personaje.puntosHabilidades >= 1) {
+        window.alert("hey! que te quedan puntos para repartir tontito.")
       }
+      /* 
+          else if (localStorage.getItem(this.usuarioActual) != null) {
+      
+            if (confirm('Ya existe un archivo de guardado ¿Seguro que desea sobrescribirlo?')) {
+              this.guardando();
+            }
+          } */
+
+      else { this.emergente = "crearUsuario" }
     }
-
     else { this.guardando() }
+  }
 
+  guardarUsuario() {
+    if (this.usuarioContrasenia === this.repetirContrasenia) {
+      this.guardando();
+    }
+    else { window.alert("Las contraseñas no coinciden") }
   }
 
   guardando() {
+    if (this.emergente != "") {
+      this.personaje.contrasenia = this.usuarioContrasenia;
+      this.usuarioContrasenia = "";
+      this.repetirContrasenia = "";
+    }
+
     const usuarioJSON = JSON.stringify(this.personaje);
     const fecha = new Date().toUTCString();
-    const usuariosGuardados= this.usuariosGuardados.join(',');
+    const usuariosGuardados = this.usuariosGuardados.join();/* 
+    const usuariosGuardados= this.usuariosGuardados.join(', '); */
 
     this.mostrarBotones = false;
     localStorage.setItem(this.usuarioActual, usuarioJSON);
     localStorage.setItem('fechaGuardado', fecha);
-    localStorage.setItem('usuarios', usuariosGuardados);
+    localStorage.setItem('usuariosGuardados', usuariosGuardados);
+
 
     this.cargandoInicio();
+
 
     /* 
     localStorage.setItem('fecha', fecha.toDateString()); */
@@ -99,42 +122,60 @@ export class DatosService {
 
     console.log(fecha);
 
-
   }
 
 
   cargar() {
-
-    if (localStorage.getItem('usuario') != null) {
-      if (this.personaje.puntosHabilidades <= 12) {
-        if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
-          this.cargandoUsuario()
-        }
+    if (this.personaje.puntosHabilidades <= 12) {
+      if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
+        this.emergente = "usuarios";
       }
-      else { this.cargandoUsuario() }
-
     }
-    else { window.alert("No hay archivo guardado.") }
+    else { this.emergente = "usuarios"; }
+    /* 
+        if (localStorage.getItem(this.usuarioActual) != null) {
+          if (this.personaje.puntosHabilidades <= 12) {
+            if (confirm("¿Estás seguro que quieres cargar el archivo guardado? Los datos no guardados se perderán.")) {
+              this.cargandoUsuario()
+            }
+          }
+          else { this.cargandoUsuario() }
+    
+        }
+        else { window.alert("No hay archivo guardado.") } */
+  }
+  cargarAcceso(nombre: string) {
+    this.usuarioAcceder = nombre;
+    this.emergente = "ponerContrasenia"
   }
 
   cargandoUsuario() {
-    const usuarioJSON = localStorage.getItem('usuario');
 
+    this.usuarioActual = this.usuarioAcceder;
+
+    const usuarioJSON = localStorage.getItem(this.usuarioActual);
 
     if (usuarioJSON) {
-      this.personaje = JSON.parse(usuarioJSON);
-      this.mostrarBotones = false;
+      const personajeSinAutentificar = JSON.parse(usuarioJSON);
+
+      if (personajeSinAutentificar.contrasenia == this.usuarioContrasenia) {
+        if (usuarioJSON) {
+          this.personaje = JSON.parse(usuarioJSON);
+          this.mostrarBotones = false;
+        }
+      }
+      else { window.alert("La contraseña no es correcta") }
     }
   }
   cargandoInicio() {
     const fechaDeGuardado = localStorage.getItem('fechaGuardado');
-    const usuarios: string | null = localStorage.getItem('usuarios');
+    const usuarios: string | null = localStorage.getItem('usuariosGuardados');
 
     if (fechaDeGuardado) { //no entiendo muy bien por qué es necesario esto
       this.fechaDeGuardado = fechaDeGuardado;
     }
     if (usuarios) { // entiendo que se usa, para evitar que haya un valor vacío
-      this.usuariosGuardados = usuarios.split(', ');
+      this.usuariosGuardados = usuarios.split(',');
     }
   }
 
