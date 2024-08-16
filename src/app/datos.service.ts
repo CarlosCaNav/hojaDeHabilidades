@@ -10,9 +10,11 @@ export class DatosService {
 
   keyAdmin: string = "Carlos";
 
-  usuariosGuardados: Array<string> = ['Diego', 'Carlos', 'Alfonso'];
+  usuariosGuardados: Array<string> = [];
   usuarioActual: string = "";
-  usuarioAcceder: string = ""
+
+  accionContrasenia: string = ""; //cargar o borrar
+  usuarioAcceder: string = "";
   usuarioContrasenia = "";
   repetirContrasenia = "";
 
@@ -110,7 +112,7 @@ export class DatosService {
 
 
     this.cargandoInicio();
-    this.emergente="";
+    this.emergente = "";
 
 
     /* 
@@ -133,6 +135,8 @@ export class DatosService {
       }
     }
     else { this.emergente = "usuarios"; }
+
+
     /* 
         if (localStorage.getItem(this.usuarioActual) != null) {
           if (this.personaje.puntosHabilidades <= 12) {
@@ -145,9 +149,22 @@ export class DatosService {
         }
         else { window.alert("No hay archivo guardado.") } */
   }
+  cargandoInicio() {
+    const fechaDeGuardado = localStorage.getItem('fechaGuardado');
+    const usuarios: string | null = localStorage.getItem('usuariosGuardados');
+
+    if (fechaDeGuardado) { //no entiendo muy bien por qué es necesario esto
+      this.fechaDeGuardado = fechaDeGuardado;
+    }
+    if (usuarios) { // entiendo que se usa, para evitar que haya un valor vacío
+      this.usuariosGuardados = usuarios.split(',');
+    }
+  }
+  
   cargarAcceso(nombre: string) {
     this.usuarioAcceder = nombre;
     this.emergente = "ponerContrasenia"
+    this.accionContrasenia = "cargar";
   }
 
   cargandoUsuario() {
@@ -169,25 +186,52 @@ export class DatosService {
       else { window.alert("La contraseña no es correcta") }
     }
   }
-  cargandoInicio() {
-    const fechaDeGuardado = localStorage.getItem('fechaGuardado');
-    const usuarios: string | null = localStorage.getItem('usuariosGuardados');
 
-    if (fechaDeGuardado) { //no entiendo muy bien por qué es necesario esto
-      this.fechaDeGuardado = fechaDeGuardado;
-    }
-    if (usuarios) { // entiendo que se usa, para evitar que haya un valor vacío
-      this.usuariosGuardados = usuarios.split(',');
-    }
+  cancelar() { this.emergente = "" }
+
+  borrarUsuario(nombre: string) {
+    this.usuarioAcceder = nombre;
+    this.emergente = "ponerContrasenia"
+    this.accionContrasenia = "borrar";
   }
+  borrandoUsuario() {
 
-  cancelar(){this.emergente = ""}
+    const usuarioJSON = localStorage.getItem(this.usuarioAcceder);
+
+    if (usuarioJSON) {
+      const personajeSinAutentificar = JSON.parse(usuarioJSON);
+
+      if (personajeSinAutentificar.contrasenia == this.usuarioContrasenia) {
+        if (usuarioJSON) {
+          localStorage.removeItem(this.usuarioAcceder);
+          this.usuariosGuardados = this.usuariosGuardados.filter(usuario => usuario !== this.usuarioAcceder);
+          const usuariosGuardados = this.usuariosGuardados.join();
+          localStorage.setItem('usuariosGuardados', usuariosGuardados);
+
+          this.nuevo();
+        }
+        else { window.alert("Algo falla... ¿falta el usuario?. Ponte en contacto con el desarrollador") }
+      }
+      else { window.alert("La contraseña no es correcta") }
+    }
+    else { window.alert("Algo falla... falta el usuario. Ponte en contacto con el desarrollador") }
+  }
 
   borrarTodo() {
     if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {
       localStorage.clear();
+      this.nuevo()
       window.alert('Todos los datos han sido eliminados.');
     }
     this.fechaDeGuardado = "No hay archivo de guardado."
+  }
+
+  nuevo(){
+    this.usuarioAcceder = "";
+    this.usuarioActual = "";
+    this.emergente = ""
+    this.accionContrasenia = "";
+    this.mostrarBotones = true;
+    this.cargandoInicio();
   }
 }

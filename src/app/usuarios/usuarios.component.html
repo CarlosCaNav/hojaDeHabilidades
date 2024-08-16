@@ -1,8 +1,13 @@
-<div class="dialogo">
-   <b> Usuarios:</b>
-    <ul>
-        <li class="botones" *ngFor=" let usuario of this.DatosService.usuariosGuardados">
-        <button class="boton" (click)="this.DatosService.cargarAcceso(usuario)">{{usuario}}</button></li>
-    </ul>
-    <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 150px;">Cancelar</button>
+<div class="fondo">
+    <div class="dialogo">
+        <b *ngIf="this.DatosService.usuariosGuardados.length <= 0"> No hay usuarios guardados en este equipo.</b>
+        <b *ngIf="this.DatosService.usuariosGuardados.length > 0"> Usuarios:</b>
+        <ul>
+            <li class="botones" *ngFor=" let usuario of this.DatosService.usuariosGuardados">
+                <button class="boton" (click)="this.DatosService.cargarAcceso(usuario)">{{usuario}}</button>
+                <button class="boton" (click)="this.DatosService.borrarUsuario(usuario)">Borrar.</button>
+            </li>
+        </ul>
+        <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 150px;">Cancelar</button>
+    </div>
 </div>

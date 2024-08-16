@@ -2,6 +2,7 @@
 <div class="dialogo">
 <p>Contraseña de {{this.DatosService.usuarioAcceder}}:</p>
 <input type="password" [(ngModel)]="this.DatosService.usuarioContrasenia"><br><br>
-<button class="boton" (click)="this.DatosService.cargandoUsuario()">Cargar</button>
+<button *ngIf="this.DatosService.accionContrasenia === 'borrar'" class="boton" (click)="this.DatosService.borrandoUsuario()">Borrar</button>
+<button  *ngIf="this.DatosService.accionContrasenia === 'cargar'" class="boton" (click)="this.DatosService.cargandoUsuario()">Cargar</button>
 <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 50px;">Cancelar</button>
 </div>

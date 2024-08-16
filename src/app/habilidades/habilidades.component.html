@@ -6,14 +6,14 @@
         <div *ngIf="this.DatosService.mostrarBotones">
             <b>Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}</b></div><br>
             <div *ngIf="!this.DatosService.mostrarBotones">
-                Usuario Actual: {{ this.DatosService.usuarioActual}}</div><br>
+               <b> Usuario Actual: {{ this.DatosService.usuarioActual}}.</b> Pulsa en las extremidades para aplicar daño.</div><br>
         <div class="caja">
             <div class="habilidades">
                 <div class="habilidad">
                     Fuerza {{ this.DatosService.personaje.fuerza }}<br>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('restar', 'fuerza')">-</button>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('sumar', 'fuerza')">+</button>
                     <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.fuerza">
                         <div class="imgCantidad" *ngSwitchCase="1"
@@ -41,9 +41,9 @@
                 </div>
                 <div class="habilidad">
                     Velocidad {{ this.DatosService.personaje.velocidad}}<br>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('restar', 'velocidad')">-</button>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('sumar', 'velocidad')">+</button>
                     <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.velocidad">
                         <div class="imgCantidad" *ngSwitchCase="1"
@@ -68,9 +68,9 @@
                 </div>
                 <div class="habilidad">
                     Puntería {{ this.DatosService.personaje.punteria }}<br>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('restar', 'punteria')">-</button>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('sumar', 'punteria')">+</button>
                     <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.punteria">
                         <div class="imgCantidad" *ngSwitchCase="1"
@@ -95,9 +95,9 @@
                 </div>
                 <div class="habilidad">
                     Percepción {{ this.DatosService.personaje.percepcion }}<br>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('restar', 'percepcion')">-</button>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('sumar', 'percepcion')">+</button>
                     <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.percepcion">
                         <div class="imgCantidad" *ngSwitchCase="1"
@@ -122,9 +122,9 @@
                 </div>
                 <div class="habilidad">
                     Destreza {{ this.DatosService.personaje.destreza }}<br>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('restar', 'destreza')">-</button>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('sumar', 'destreza')">+</button>
                     <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.destreza">
                         <div class="imgCantidad" *ngSwitchCase="1"
@@ -149,9 +149,9 @@
                 </div>
                 <div class="habilidad">
                     Discrepción {{ this.DatosService.personaje.discrepcion }}<br>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('restar', 'discrepcion')">-</button>
-                    <button class="bRedondo" *ngIf="this.DatosService.mostrarBotones"
+                    <button class="bRedondo bNormal" *ngIf="this.DatosService.mostrarBotones"
                         (click)="cambioHabilidad('sumar', 'discrepcion')">+</button>
                     <div *ngIf="!this.DatosService.mostrarBotones" [ngSwitch]="DatosService.personaje.discrepcion">
                         <div class="imgCantidad" *ngSwitchCase="1"
@@ -202,12 +202,14 @@
 
         <br><br><br>
 
-        Fecha del archivo de guardado: {{DatosService.fechaDeGuardado}}<br>
-        <button class="boton" (click)="DatosService.guardar()">Guardar</button>
-        <button class="boton" *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button><br><br><!-- 
+       <!--  Fecha del archivo de guardado: {{DatosService.fechaDeGuardado}}<br> -->
+        <button class="bNormal" (click)="DatosService.guardar()">Guardar</button>
+        <button class="bNormal" *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button><br><br>
+        <button class="bNormal" (click)="DatosService.nuevo()">Crear nuevo</button>
+        <!-- 
         <button *ngIf="this.DatosService.fechaDeGuardado != 'No hay archivo de guardado.'" Este será el que valga
             (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button> -->
-            <button class="boton" (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button>
+            <button class="bNormal" (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button>
 
 
     </div>

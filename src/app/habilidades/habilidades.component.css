@@ -50,9 +50,17 @@ width: 100vw;
 
 .bRedondo {
     height: 20px;
-    width: 20px;
+    width: 20px;/* 
     margin: 1px;
     border-radius: 100%;
+    border: 0px;
+    background-color: aliceblue;
+    box-shadow: 2px 2px 2px black; */
+}
+
+.bNormal {
+    margin: 1px;
+    border-radius: 100px;
     border: 0px;
     background-color: aliceblue;
     box-shadow: 2px 2px 2px black;
@@ -62,15 +70,6 @@ width: 100vw;
     position: absolute;
     z-index: 3;
     user-select: none;
-}
-
-.boton{
-    margin: 5px;
-    padding: 4px;
-    padding-bottom: 3px;
-    background-color:rgb(255, 255, 255);
-    border-radius: 5px;
-    border: 2px 2px solid black;
 }
 
 .cabeza{
