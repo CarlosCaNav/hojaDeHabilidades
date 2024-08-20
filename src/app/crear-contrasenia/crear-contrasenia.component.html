@@ -6,7 +6,7 @@
     <p>Contraseña:<br>
     <input type="password" [(ngModel)]="this.DatosService.usuarioContrasenia"></p>
     <p>Repite contraseña: <br>
-    <input type="password" [(ngModel)]="this.DatosService.repetirContrasenia"></p>
+    <input type="password" [(ngModel)]="this.DatosService.repetirContrasenia" (keyup.enter)="guardar()"></p>
     <button (click)="guardar()" class="boton">Guardar</button>
     <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 50px;">Cancelar</button>
 </div>

@@ -5,9 +5,10 @@
         <ul>
             <li class="botones" *ngFor=" let usuario of this.DatosService.usuariosGuardados">
                 <button class="boton" (click)="this.DatosService.cargarAcceso(usuario)">{{usuario}}</button>
-                <button class="boton" (click)="this.DatosService.borrarUsuario(usuario)">Borrar.</button>
+                <button class="borrar" (click)="this.DatosService.borrarUsuario(usuario)">Borrar</button>
             </li>
         </ul>
+        <br>
         <button (click)="this.DatosService.cancelar()" class="boton" style="margin-left: 150px;">Cancelar</button>
     </div>
 </div>

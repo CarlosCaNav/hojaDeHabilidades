@@ -15,3 +15,12 @@
     margin-left: calc(50vw - 300px); */
 }
 
+.botones{
+    display: flex;
+    justify-content: space-between;
+}
+
+.borrar{/* 
+    background-color: red; */
+    border: none;
+}

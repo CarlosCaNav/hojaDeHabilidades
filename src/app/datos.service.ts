@@ -22,6 +22,7 @@ export class DatosService {
 
   mostrarBotones: boolean = true;
   emergente: string = "";
+  textoAlerta: string = "Holi caracoli!";
 
   personaje: Personaje = {
     id: 1,
@@ -71,7 +72,11 @@ export class DatosService {
   guardar() {
     if (this.usuarioActual == "") {
       if (this.personaje.puntosHabilidades >= 1) {
-        window.alert("hey! que te quedan puntos para repartir tontito.")
+        this.emergente = "alerta";
+        this.textoAlerta = "hey! que te quedan puntos para repartir.";
+
+        this.emergente = "alerta";
+        this.textoAlerta = "hey! que te quedan puntos para repartir."
       }
       /* 
           else if (localStorage.getItem(this.usuarioActual) != null) {
@@ -90,7 +95,10 @@ export class DatosService {
     if (this.usuarioContrasenia === this.repetirContrasenia) {
       this.guardando();
     }
-    else { window.alert("Las contraseñas no coinciden") }
+    else {
+      this.emergente = "alerta";
+      this.textoAlerta = "Las contraseñas no coinciden"
+    }
   }
 
   guardando() {
@@ -147,7 +155,8 @@ export class DatosService {
           else { this.cargandoUsuario() }
     
         }
-        else { window.alert("No hay archivo guardado.") } */
+        else { this.emergente="alerta";
+this.textoAlerta="No hay archivo guardado.") } */
   }
   cargandoInicio() {
     const fechaDeGuardado = localStorage.getItem('fechaGuardado');
@@ -160,7 +169,7 @@ export class DatosService {
       this.usuariosGuardados = usuarios.split(',');
     }
   }
-  
+
   cargarAcceso(nombre: string) {
     this.usuarioAcceder = nombre;
     this.emergente = "ponerContrasenia"
@@ -183,7 +192,10 @@ export class DatosService {
           this.emergente = "";
         }
       }
-      else { window.alert("La contraseña no es correcta") }
+      else {
+        this.emergente = "alerta";
+        this.textoAlerta = "La contraseña no es correcta"
+      }
     }
   }
 
@@ -210,23 +222,33 @@ export class DatosService {
 
           this.nuevo();
         }
-        else { window.alert("Algo falla... ¿falta el usuario?. Ponte en contacto con el desarrollador") }
+        else {
+          this.emergente = "alerta";
+          this.textoAlerta = "Algo falla... ¿falta el usuario?. Ponte en contacto con el desarrollador"
+        }
       }
-      else { window.alert("La contraseña no es correcta") }
+      else {
+        this.emergente = "alerta";
+        this.textoAlerta = "La contraseña no es correcta"
+      }
     }
-    else { window.alert("Algo falla... falta el usuario. Ponte en contacto con el desarrollador") }
+    else {
+      this.emergente = "alerta";
+      this.textoAlerta = "Algo falla... falta el usuario. Ponte en contacto con el desarrollador"
+    }
   }
 
   borrarTodo() {
     if (confirm('¿Estás seguro de que deseas eliminar todos los datos almacenados?')) {
       localStorage.clear();
       this.nuevo()
-      window.alert('Todos los datos han sido eliminados.');
+      this.emergente = "alerta";
+      this.textoAlerta = 'Todos los datos han sido eliminados.';
     }
     this.fechaDeGuardado = "No hay archivo de guardado."
   }
 
-  nuevo(){
+  nuevo() {
     this.usuarioAcceder = "";
     this.usuarioActual = "";
     this.emergente = ""

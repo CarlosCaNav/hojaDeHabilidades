@@ -4,18 +4,19 @@ import { CommonModule } from '@angular/common';
 import { UsuariosComponent } from "../usuarios/usuarios.component";
 import { CrearContraseniaComponent } from "../crear-contrasenia/crear-contrasenia.component";
 import { PonerContraseniaComponent } from "../poner-contrasenia/poner-contrasenia.component";
+import { AlertasComponent } from "../alertas/alertas.component";
 
 @Component({
   selector: 'app-habilidades',
   standalone: true,
-  imports: [CommonModule, UsuariosComponent, CrearContraseniaComponent, PonerContraseniaComponent],
+  imports: [CommonModule, UsuariosComponent, CrearContraseniaComponent, PonerContraseniaComponent, AlertasComponent],
   templateUrl: './habilidades.component.html',
   styleUrl: './habilidades.component.css'
 })
 
 export class HabilidadesComponent {
   constructor(public DatosService: DatosService) {
-    this.DatosService.cargandoInicio() 
+    this.DatosService.cargandoInicio()
   }
   objectKeys = Object.keys;
 
@@ -35,7 +36,8 @@ export class HabilidadesComponent {
         this.intentos -= 1;
       }
       else {
-        window.alert("La habilidad mínima es 1");
+        this.DatosService.emergente = "alerta";
+        this.DatosService.textoAlerta = "La habilidad mínima es 1";
       }
     }
     else if (operacion == "sumar") {
@@ -49,17 +51,21 @@ export class HabilidadesComponent {
         if (this.intentos > 0) {
           this.intentos -= 1;
         } else {
-          window.alert("Máximo 6 puntos por habilidad");
+          this.DatosService.emergente = "alerta";
+          this.DatosService.textoAlerta = "Máximo 6 puntos por habilidad";
         }
       } else if (this.DatosService.personaje.puntosHabilidades <= 0) {
         if (this.intentos > 0) {
           this.intentos -= 1;
         } else {
-          window.alert("No te quedan puntos para repartir tontito.");
+          this.DatosService.emergente = "alerta";
+          this.DatosService.textoAlerta = "No te quedan puntos para repartir tontito.";
         }
       }
     }
-    else { window.alert("Error! algo falla") }
+    else { 
+      this.DatosService.emergente = "alerta";
+      this.DatosService.textoAlerta = "Error! algo falla" }
   }
 
   recibirDanio(event: MouseEvent, lugar: string) {

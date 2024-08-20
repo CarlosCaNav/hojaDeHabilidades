@@ -2,6 +2,7 @@
     <app-usuarios *ngIf="this.DatosService.emergente == 'usuarios'"></app-usuarios>
     <app-crear-contrasenia *ngIf="this.DatosService.emergente == 'crearUsuario'"></app-crear-contrasenia>
     <app-poner-contrasenia  *ngIf="this.DatosService.emergente == 'ponerContrasenia'"></app-poner-contrasenia>
+    <app-alertas  *ngIf="this.DatosService.emergente == 'alerta'"></app-alertas>
     <div class="conjunto">
         <div *ngIf="this.DatosService.mostrarBotones">
             <b>Puntos a repartir {{ this.DatosService.personaje.puntosHabilidades }}</b></div><br>
@@ -204,8 +205,8 @@
 
        <!--  Fecha del archivo de guardado: {{DatosService.fechaDeGuardado}}<br> -->
         <button class="bNormal" (click)="DatosService.guardar()">Guardar</button>
-        <button class="bNormal" *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button><br><br>
-        <button class="bNormal" (click)="DatosService.nuevo()">Crear nuevo</button>
+        <button class="bNormal" *ngIf="this.DatosService.mostrarBotones" (click)="DatosService.cargar()">Cargar</button>
+        <button class="bNormal" *ngIf="!this.DatosService.mostrarBotones" (click)="DatosService.nuevo()">Crear nuevo</button><br><br>
         <!-- 
         <button *ngIf="this.DatosService.fechaDeGuardado != 'No hay archivo de guardado.'" Este será el que valga
             (click)="DatosService.borrarTodo()">Borrar archivo de guardado</button> -->
